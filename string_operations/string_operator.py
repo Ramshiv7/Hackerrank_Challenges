@@ -7,7 +7,8 @@ import re
 import sys
 
 
-# strmethod - String method Problem 
+
+#
 # Complete the 'strmethod' function below.
 #
 # The function accepts following parameters:
@@ -17,8 +18,10 @@ import sys
 #  4. LIST li1
 #  5. STRING strf
 #
+from collections import Counter
 
 def stringmethod(para, special1, special2, list1, strfind):
+    # Write your code here
     # Write your code here
     #1 -- Remove all special character from para specified in special1 and save them in a variable word1.
     for _ in special1:
@@ -64,23 +67,21 @@ def stringmethod(para, special1, special2, list1, strfind):
     
     #6 -- calculate the less frequently used word whose count < 3 and print the last 20 less frequent words as a list Note : count the words as they apprear
     new_var = word1.split(" ")
-    less_word = []
-    for _ in new_var:
-        if new_var.count(_) < 3:
-            less_word.append(_)
-            
-    print(less_word[-21:])
+
+    counts = Counter(new_var)
+
+    new_lst = list(counts.keys())
+    
+    if new_lst[-1] == "":
+        print(new_lst[-21:-1])
+    else:
+        print(new_lst[-20:])
     
     #7 print the last index in word1, where the substring strfind is found
 
     if strfind in word1:
         print(word1.rindex(strfind))
-        
-          
-    
-    
-   
-    
+
 if __name__ == '__main__':
     para = input()
 
